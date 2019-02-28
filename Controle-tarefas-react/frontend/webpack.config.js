@@ -12,7 +12,7 @@ module.exports = {
         contentBase: './public',
     },
     resolve: {
-        extensions: ['', '.js', '.jsx'],
+        extensions: ['', '.js', '.jsx', '.png'],
         alias: {
             modules: __dirname + '/node_modules'
         }
@@ -32,9 +32,14 @@ module.exports = {
         }, {
             test: /\.css$/,
             loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
-        }, {
+        },
+        {
+            test: /\.(jpe?g|png|gif|svg)$/i,
+            loader: "file-loader?name=/public/icons/[name].[ext]"
+        },
+        {
             test: /\.woff|.woff2|.ttf|.eot|.svg*.*$/,
             loader: 'file'
-        }]
+        },]
     }
 }
